@@ -1,0 +1,32 @@
+# The tenstag specification (tenstag/tenstag) commit whose documents this code follows: the store layouts
+# (specs/stores/), the configuration, the locations, the listings, the names, the fingerprint, tags, the tag store and
+# the fingerprint cache. The code cites their rules as `SPEC tenstag specs/<document>.md <rule>`; tests/vectors/ are
+# copies of the specification's specs/test-vectors/ at this commit, which the tests run. `make spec` checks both, in a
+# checkout named by TENSTAG_SPEC.
+#
+# To move to a newer specification: read what changed in specs/ between `commit` and the new one; change the code and
+# its citations; copy specs/test-vectors/*.json to tests/vectors/; change `commit` and `checked`; run
+# `TENSTAG_SPEC=<checkout> make spec check`.
+[tenstag]
+commit = "b1a8c85a90d06070c7f06cd4dc5ceb8760022e50"
+checked = "2026-11-24"
+documents = [
+    "fingerprint.md",
+    "tags.md",
+    "tag-store.md",
+    "fingerprint-cache.md",
+    "configuration.md",
+    "locations.md",
+    "listing.md",
+    "names.md",
+    "stores/hf-hub-cache.md",
+    "stores/llama-cpp-cache.md",
+    "stores/ollama.md",
+    "stores/lm-studio.md",
+    "stores/gpt4all.md",
+    "stores/modelscope-cache.md",
+    "stores/jan.md",
+    "stores/docker-model-runner.md",
+    "stores/ramalama.md",
+    "stores/suggestions.md",
+]

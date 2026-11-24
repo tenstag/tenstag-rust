@@ -1,0 +1,81 @@
+{
+ "about": "specs/fingerprint-cache.md TFC-006: `beside` lists the folders in the folder that holds `blobs`",
+ "paths": [
+  {
+   "why": "the Hugging Face cache, an LFS blob",
+   "path": "/c/hub/models--Qwen--Qwen3-0.6B-GGUF/blobs/abababababababababababababababababababababababababababababababab",
+   "beside": [],
+   "sha256": "abababababababababababababababababababababababababababababababab"
+  },
+  {
+   "why": "the Hugging Face cache, a git blob (SHA-1)",
+   "path": "/c/hub/models--Qwen--Qwen3-0.6B-GGUF/blobs/cdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd",
+   "beside": [],
+   "sha256": null
+  },
+  {
+   "why": "a blobs folder not in a models-- folder",
+   "path": "/c/other/blobs/abababababababababababababababababababababababababababababababab",
+   "beside": [],
+   "sha256": null
+  },
+  {
+   "why": "upper-case hex",
+   "path": "/c/hub/models--a--b/blobs/ABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABAB",
+   "beside": [],
+   "sha256": null
+  },
+  {
+   "why": "Ollama",
+   "path": "/o/models/blobs/sha256-abababababababababababababababababababababababababababababababab",
+   "beside": [
+    "blobs",
+    "manifests"
+   ],
+   "sha256": "abababababababababababababababababababababababababababababababab"
+  },
+  {
+   "why": "Ollama, a download in progress",
+   "path": "/o/models/blobs/sha256-abababababababababababababababababababababababababababababababab-partial",
+   "beside": [
+    "blobs",
+    "manifests"
+   ],
+   "sha256": null
+  },
+  {
+   "why": "RamaLama (refs and snapshots, no manifests)",
+   "path": "/r/store/huggingface/Qwen/M/blobs/sha256-abababababababababababababababababababababababababababababababab",
+   "beside": [
+    "blobs",
+    "refs",
+    "snapshots"
+   ],
+   "sha256": null
+  },
+  {
+   "why": "Docker Model Runner, sha256",
+   "path": "/d/models/blobs/sha256/abababababababababababababababababababababababababababababababab",
+   "beside": [],
+   "sha256": "abababababababababababababababababababababababababababababababab"
+  },
+  {
+   "why": "Docker Model Runner, sha512",
+   "path": "/d/models/blobs/sha512/abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab",
+   "beside": [],
+   "sha256": null
+  },
+  {
+   "why": "Docker Model Runner, incomplete",
+   "path": "/d/models/blobs/sha256/abababababababababababababababababababababababababababababababab.incomplete",
+   "beside": [],
+   "sha256": null
+  },
+  {
+   "why": "a plain file",
+   "path": "/m/Qwen3-0.6B-Q8_0.gguf",
+   "beside": [],
+   "sha256": null
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+# The Rust toolchain this repository is built and tested with.
+#
+# It is pinned to an exact release, so every maintainer and every CI run uses the same compiler and
+# the same lints. Raise it on purpose, in its own commit, and run `make check` when you do.
+[toolchain]
+channel = "1.100.0"
+components = ["rustfmt", "clippy"]
