@@ -1,0 +1,449 @@
+{
+ "about": "specs/configuration.md CFG-010 to CFG-013. Each case: in an empty folder, write `before` to `file` (none when null), make `change` with exactly `env` as the environment and `now` as the time: `add` a location (path, kind, depth, min_size as given, the rest as the kind's defaults; added_by), `remove` a path, or set `defaults`. Then either it is an `error` and `file` is as it was, or `file` holds `after` (missing when null), and `result` is what the program was told: `added` or `listed` for an add, `removed` (null when nothing was) for a remove, nothing for defaults; locations as configuration.json's `read` rows, with added_by and added. In `before` and `after`, {root} is the case's folder written as a TOML basic string would hold it (CFG-011); elsewhere, {root} is the folder.",
+ "now": "2026-11-24T18:48:18Z",
+ "cases": [
+  {
+   "why": "CFG-010, CFG-011: adding to a file that is not there creates it, and its folders",
+   "platform": "any",
+   "env": {
+    "HOME": "{root}/home",
+    "XDG_CONFIG_HOME": "{root}/conf"
+   },
+   "file": "conf/tenstag/config.toml",
+   "before": null,
+   "change": {
+    "add": {
+     "path": "{root}/models",
+     "added_by": "goldnode/tensrun"
+    }
+   },
+   "after": "[[location]]\npath = \"{root}/models\"\nadded_by = \"goldnode/tensrun\"\nadded = 2026-11-24T18:48:18Z\n",
+   "result": {
+    "added": {
+     "path": "{root}/models",
+     "kind": "directory",
+     "depth": 6,
+     "added_by": "goldnode/tensrun",
+     "added": "2026-11-24T18:48:18Z"
+    }
+   }
+  },
+  {
+   "why": "CFG-011: added at the end, after an empty line; comments and [names] kept; a missing final newline added",
+   "platform": "unix",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "file": "config.toml",
+   "before": "# mine\ndefaults = true # yes\n\n[names]\nsmall = \"x\"",
+   "change": {
+    "add": {
+     "path": "~/m",
+     "kind": "directory",
+     "depth": 10,
+     "min_size": 0
+    }
+   },
+   "after": "# mine\ndefaults = true # yes\n\n[names]\nsmall = \"x\"\n\n[[location]]\npath = \"~/m\"\ndepth = 10\nmin_size = 0\nadded = 2026-11-24T18:48:18Z\n",
+   "result": {
+    "added": {
+     "path": "{root}/home/m",
+     "kind": "directory",
+     "depth": 10,
+     "added_by": null,
+     "added": "2026-11-24T18:48:18Z",
+     "min_size": 0
+    }
+   }
+  },
+  {
+   "why": "CFG-011: kind written when not directory; a kind's default depth and min_size are not written",
+   "platform": "unix",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "file": "config.toml",
+   "before": "defaults = false\n",
+   "change": {
+    "add": {
+     "path": "/srv/g",
+     "kind": "gpt4all",
+     "depth": 8,
+     "min_size": 1048576,
+     "added_by": "com.example.app"
+    }
+   },
+   "after": "defaults = false\n\n[[location]]\npath = \"/srv/g\"\nkind = \"gpt4all\"\nadded_by = \"com.example.app\"\nadded = 2026-11-24T18:48:18Z\n",
+   "result": {
+    "added": {
+     "path": "/srv/g",
+     "kind": "gpt4all",
+     "depth": 8,
+     "added_by": "com.example.app",
+     "added": "2026-11-24T18:48:18Z"
+    }
+   }
+  },
+  {
+   "why": "CFG-011: a store read by its layout has no depth",
+   "platform": "unix",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "file": "config.toml",
+   "before": "",
+   "change": {
+    "add": {
+     "path": "/srv/o",
+     "kind": "ollama"
+    }
+   },
+   "after": "[[location]]\npath = \"/srv/o\"\nkind = \"ollama\"\nadded = 2026-11-24T18:48:18Z\n",
+   "result": {
+    "added": {
+     "path": "/srv/o",
+     "kind": "ollama",
+     "depth": null,
+     "added_by": null,
+     "added": "2026-11-24T18:48:18Z"
+    }
+   }
+  },
+  {
+   "why": "CFG-011: a string escaped as a TOML basic string",
+   "platform": "unix",
+   "env": {
+    "HOME": "{root}/home",
+    "XDG_CONFIG_HOME": "{root}/conf"
+   },
+   "file": "conf/tenstag/config.toml",
+   "before": null,
+   "change": {
+    "add": {
+     "path": "/data/we\"ird\\dir\tx"
+    }
+   },
+   "after": "[[location]]\npath = \"/data/we\\\"ird\\\\dir\\u0009x\"\nadded = 2026-11-24T18:48:18Z\n",
+   "result": {
+    "added": {
+     "path": "/data/we\"ird\\dir\tx",
+     "kind": "directory",
+     "depth": 6,
+     "added_by": null,
+     "added": "2026-11-24T18:48:18Z"
+    }
+   }
+  },
+  {
+   "why": "CFG-011: a folder the file already lists, written another way: nothing written",
+   "platform": "unix",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "file": "config.toml",
+   "before": "[[location]]\npath = \"~/data\"\nadded_by = \"a/b\"\nadded = 2026-01-02\n",
+   "change": {
+    "add": {
+     "path": "{root}/home/data",
+     "added_by": "goldnode/tensrun"
+    }
+   },
+   "after": "[[location]]\npath = \"~/data\"\nadded_by = \"a/b\"\nadded = 2026-01-02\n",
+   "result": {
+    "listed": {
+     "path": "{root}/home/data",
+     "kind": "directory",
+     "depth": 6,
+     "added_by": "a/b",
+     "added": "2026-01-02"
+    }
+   }
+  },
+  {
+   "why": "CFG-011: a relative path is an error",
+   "platform": "any",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "file": "config.toml",
+   "before": "",
+   "change": {
+    "add": {
+     "path": "models"
+    }
+   },
+   "error": true
+  },
+  {
+   "why": "CFG-011: an added_by that is not an owner name is an error",
+   "platform": "unix",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "file": "config.toml",
+   "before": "",
+   "change": {
+    "add": {
+     "path": "/m",
+     "added_by": "My Program"
+    }
+   },
+   "error": true
+  },
+  {
+   "why": "CFG-010: a file breaking CFG-002 is never changed",
+   "platform": "unix",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "file": "config.toml",
+   "before": "colour = 1\n",
+   "change": {
+    "add": {
+     "path": "/m"
+    }
+   },
+   "error": true
+  },
+  {
+   "why": "CFG-010: a form the line rules cannot change safely (an array of inline tables) is refused",
+   "platform": "unix",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "file": "config.toml",
+   "before": "location = [{path = \"/a\"}]\n",
+   "change": {
+    "add": {
+     "path": "/m"
+    }
+   },
+   "error": true
+  },
+  {
+   "why": "CFG-010: TENSTAG_CONFIG naming a missing file is an error",
+   "platform": "any",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "file": "config.toml",
+   "before": null,
+   "change": {
+    "add": {
+     "path": "/m"
+    }
+   },
+   "error": true
+  },
+  {
+   "why": "CFG-012: removing a location, with the comment above it; the next one's comment stays; empty lines do not pile up",
+   "platform": "unix",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "file": "config.toml",
+   "before": "# my models\ndefaults = false   # only these\n\n[[location]]\npath = \"/data/a\"\n\n# the NAS\n[[location]]  # mounted at boot\npath = \"/mnt/nas\"\ndepth = 10\n\n# Ollama\n[[location]]\npath = \"/srv/ollama\"\nkind = \"ollama\"\n\n[names]\nsmall = \"Qwen/Qwen3-0.6B-GGUF:Q8_0\"\n",
+   "change": {
+    "remove": "/mnt/nas"
+   },
+   "after": "# my models\ndefaults = false   # only these\n\n[[location]]\npath = \"/data/a\"\n\n# Ollama\n[[location]]\npath = \"/srv/ollama\"\nkind = \"ollama\"\n\n[names]\nsmall = \"Qwen/Qwen3-0.6B-GGUF:Q8_0\"\n",
+   "result": {
+    "removed": {
+     "path": "/mnt/nas",
+     "kind": "directory",
+     "depth": 10,
+     "added_by": null,
+     "added": null
+    }
+   }
+  },
+  {
+   "why": "CFG-012: removing the first; the comment above the second stays",
+   "platform": "unix",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "file": "config.toml",
+   "before": "# my models\ndefaults = false   # only these\n\n[[location]]\npath = \"/data/a\"\n\n# the NAS\n[[location]]  # mounted at boot\npath = \"/mnt/nas\"\ndepth = 10\n\n# Ollama\n[[location]]\npath = \"/srv/ollama\"\nkind = \"ollama\"\n\n[names]\nsmall = \"Qwen/Qwen3-0.6B-GGUF:Q8_0\"\n",
+   "change": {
+    "remove": "/data/a"
+   },
+   "after": "# my models\ndefaults = false   # only these\n\n# the NAS\n[[location]]  # mounted at boot\npath = \"/mnt/nas\"\ndepth = 10\n\n# Ollama\n[[location]]\npath = \"/srv/ollama\"\nkind = \"ollama\"\n\n[names]\nsmall = \"Qwen/Qwen3-0.6B-GGUF:Q8_0\"\n",
+   "result": {
+    "removed": {
+     "path": "/data/a",
+     "kind": "directory",
+     "depth": 6,
+     "added_by": null,
+     "added": null
+    }
+   }
+  },
+  {
+   "why": "CFG-012: removing the last location of a file; empty lines at its end go",
+   "platform": "unix",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "file": "config.toml",
+   "before": "defaults = false\n\n[[location]]\npath = \"/a\"\nadded_by = \"x/y\"\nadded = 2026-11-01T00:00:00Z\n\n\n",
+   "change": {
+    "remove": "/a"
+   },
+   "after": "defaults = false\n",
+   "result": {
+    "removed": {
+     "path": "/a",
+     "kind": "directory",
+     "depth": 6,
+     "added_by": "x/y",
+     "added": "2026-11-01T00:00:00Z"
+    }
+   }
+  },
+  {
+   "why": "CFG-012: every location with the folder goes; the first is given",
+   "platform": "unix",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "file": "config.toml",
+   "before": "[[location]]\npath = \"~/data\"\n[[location]]\npath = \"/b\"\n[[location]]\npath = \"{root}/home/data\"\nadded_by = \"x/y\"\n",
+   "change": {
+    "remove": "{root}/home/data/"
+   },
+   "after": "[[location]]\npath = \"/b\"\n",
+   "result": {
+    "removed": {
+     "path": "{root}/home/data",
+     "kind": "directory",
+     "depth": 6,
+     "added_by": null,
+     "added": null
+    }
+   }
+  },
+  {
+   "why": "CFG-012: a folder the file does not list: nothing written",
+   "platform": "unix",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "file": "config.toml",
+   "before": "defaults = false\n",
+   "change": {
+    "remove": "/a"
+   },
+   "after": "defaults = false\n",
+   "result": {
+    "removed": null
+   }
+  },
+  {
+   "why": "CFG-010, CFG-012: nothing to remove and no file: no file is created",
+   "platform": "any",
+   "env": {
+    "HOME": "{root}/home",
+    "XDG_CONFIG_HOME": "{root}/conf"
+   },
+   "file": "conf/tenstag/config.toml",
+   "before": null,
+   "change": {
+    "remove": "/a"
+   },
+   "after": null,
+   "result": {
+    "removed": null
+   }
+  },
+  {
+   "why": "CFG-013: turning the defaults off with no defaults line: the first line",
+   "platform": "any",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "file": "config.toml",
+   "before": "# mine\n[names]\na = \"b\"\n",
+   "change": {
+    "defaults": false
+   },
+   "after": "defaults = false\n# mine\n[names]\na = \"b\"\n",
+   "result": {}
+  },
+  {
+   "why": "CFG-013: the value replaced, the comment kept",
+   "platform": "any",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "file": "config.toml",
+   "before": "  defaults=false # off for now\n[names]\n",
+   "change": {
+    "defaults": true
+   },
+   "after": "  defaults=true # off for now\n[names]\n",
+   "result": {}
+  },
+  {
+   "why": "CFG-013: on, with no defaults line: nothing written",
+   "platform": "any",
+   "env": {
+    "HOME": "{root}/home",
+    "XDG_CONFIG_HOME": "{root}/conf"
+   },
+   "file": "conf/tenstag/config.toml",
+   "before": null,
+   "change": {
+    "defaults": true
+   },
+   "after": null,
+   "result": {}
+  },
+  {
+   "why": "CFG-013: a nickname called defaults is not the defaults line",
+   "platform": "any",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "file": "config.toml",
+   "before": "[names]\ndefaults = \"Qwen/Qwen3-0.6B-GGUF\"\n",
+   "change": {
+    "defaults": false
+   },
+   "after": "defaults = false\n[names]\ndefaults = \"Qwen/Qwen3-0.6B-GGUF\"\n",
+   "result": {}
+  },
+  {
+   "why": "CFG-013: already off: nothing written",
+   "platform": "any",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "file": "config.toml",
+   "before": "defaults = false\n",
+   "change": {
+    "defaults": false
+   },
+   "after": "defaults = false\n",
+   "result": {}
+  }
+ ]
+}

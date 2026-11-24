@@ -1,0 +1,39 @@
+[package]
+name = "tenstag"
+version = "0.10.1"
+edition = "2024"
+rust-version = "1.99"
+description = "Finds language and image models on disk, wherever programs keep them, and tags them by their contents."
+license = "MIT OR Apache-2.0"
+authors = ["Nick Reynolds (goldnode)"]
+repository = "https://github.com/tenstag/tenstag-rust"
+readme = "README.md"
+
+[dependencies]
+# JSON: the stores' manifests and indexes, the tag files and the fingerprint cache.
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# The configuration file (config.toml).
+toml = "0.9"
+# SHA-256: the fingerprint tfp1 (tenstag specs/fingerprint.md), and a full hash when a program asks for one.
+sha2 = "0.10"
+# Derives std::error::Error and Display for our error enum.
+thiserror = "2"
+# The standard logging facade: what tensfiler found and decided, shown by the program's logger if any.
+log = "0.4"
+
+[lints.rust]
+missing_docs = "deny"
+unsafe_op_in_unsafe_fn = "deny"
+
+[lints.clippy]
+undocumented_unsafe_blocks = "deny"
+missing_safety_doc = "deny"
+missing_errors_doc = "warn"
+missing_panics_doc = "warn"
+
+[dev-dependencies]
+
+# The fingerprint tests hash test files of up to 100 MiB; SHA-256 unoptimised takes most of a minute for them.
+[profile.dev.package.sha2]
+opt-level = 3

@@ -1,0 +1,111 @@
+{
+ "about": "specs/tag-store.md TGS-003, TGS-004: each file text, as read from tags/tfp1/<name>.json; `tags` is each owner's version and tags, or null for no tags",
+ "files": [
+  {
+   "why": "a good file",
+   "name": "abababababababababababababababababababababababababababababababab",
+   "text": "{\n  \"format\": \"tenstag-tags/2\",\n  \"identity\": \"tfp1:abababababababababababababababababababababababababababababababab\",\n  \"tags\": {\n    \"chatrun\": {\n      \"version\": 2,\n      \"tags\": {\n        \"arch\": \"qwen3\",\n        \"chat\": null\n      }\n    },\n    \"imagenode\": {\n      \"version\": 1,\n      \"tags\": {\n        \"encoder\": \"qwen2.5-vl-7b\"\n      }\n    }\n  },\n  \"bytes\": 3,\n  \"seen\": [\n    {\n      \"path\": \"/models/a.gguf\",\n      \"time\": \"2026-11-23T14:02:11Z\"\n    }\n  ]\n}",
+   "tags": {
+    "chatrun": {
+     "version": 2,
+     "tags": {
+      "arch": "qwen3",
+      "chat": null
+     }
+    },
+    "imagenode": {
+     "version": 1,
+     "tags": {
+      "encoder": "qwen2.5-vl-7b"
+     }
+    }
+   }
+  },
+  {
+   "why": "an unknown top-level key is allowed",
+   "name": "abababababababababababababababababababababababababababababababab",
+   "text": "{\"format\": \"tenstag-tags/2\", \"identity\": \"tfp1:abababababababababababababababababababababababababababababababab\", \"tags\": {\"chatrun\": {\"version\": 2, \"tags\": {\"arch\": \"qwen3\", \"chat\": null}}, \"imagenode\": {\"version\": 1, \"tags\": {\"encoder\": \"qwen2.5-vl-7b\"}}}, \"bytes\": 3, \"seen\": [{\"path\": \"/models/a.gguf\", \"time\": \"2026-11-23T14:02:11Z\"}], \"x-other\": 1}",
+   "tags": {
+    "chatrun": {
+     "version": 2,
+     "tags": {
+      "arch": "qwen3",
+      "chat": null
+     }
+    },
+    "imagenode": {
+     "version": 1,
+     "tags": {
+      "encoder": "qwen2.5-vl-7b"
+     }
+    }
+   }
+  },
+  {
+   "why": "the identity does not match the name",
+   "name": "cdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd",
+   "text": "{\"format\": \"tenstag-tags/2\", \"identity\": \"tfp1:abababababababababababababababababababababababababababababababab\", \"tags\": {\"chatrun\": {\"version\": 2, \"tags\": {\"arch\": \"qwen3\", \"chat\": null}}, \"imagenode\": {\"version\": 1, \"tags\": {\"encoder\": \"qwen2.5-vl-7b\"}}}, \"bytes\": 3, \"seen\": [{\"path\": \"/models/a.gguf\", \"time\": \"2026-11-23T14:02:11Z\"}]}",
+   "tags": null
+  },
+  {
+   "why": "format 1, without owners: no tags (it is replaced at the next write)",
+   "name": "abababababababababababababababababababababababababababababababab",
+   "text": "{\"format\": \"tenstag-tags/1\", \"identity\": \"tfp1:abababababababababababababababababababababababababababababababab\", \"tags\": {\"arch\": \"qwen3\"}, \"bytes\": 3, \"seen\": []}",
+   "tags": null
+  },
+  {
+   "why": "another format",
+   "name": "abababababababababababababababababababababababababababababababab",
+   "text": "{\"format\": \"tenstag-tags/3\", \"identity\": \"tfp1:abababababababababababababababababababababababababababababababab\", \"tags\": {\"chatrun\": {\"version\": 2, \"tags\": {\"arch\": \"qwen3\", \"chat\": null}}, \"imagenode\": {\"version\": 1, \"tags\": {\"encoder\": \"qwen2.5-vl-7b\"}}}, \"bytes\": 3, \"seen\": [{\"path\": \"/models/a.gguf\", \"time\": \"2026-11-23T14:02:11Z\"}]}",
+   "tags": null
+  },
+  {
+   "why": "an owner twice",
+   "name": "abababababababababababababababababababababababababababababababab",
+   "text": "{\"format\": \"tenstag-tags/2\", \"identity\": \"tfp1:abababababababababababababababababababababababababababababababab\", \"tags\": {\"a\": {\"version\": 0, \"tags\": {}}, \"a\": {\"version\": 0, \"tags\": {}}}, \"bytes\": 3, \"seen\": []}",
+   "tags": null
+  },
+  {
+   "why": "a key twice in an owner's tags",
+   "name": "abababababababababababababababababababababababababababababababab",
+   "text": "{\"format\": \"tenstag-tags/2\", \"identity\": \"tfp1:abababababababababababababababababababababababababababababababab\", \"tags\": {\"a\": {\"version\": 0, \"tags\": {\"k\": null, \"k\": \"v\"}}}, \"bytes\": 3, \"seen\": []}",
+   "tags": null
+  },
+  {
+   "why": "an owner name that is not one",
+   "name": "abababababababababababababababababababababababababababababababab",
+   "text": "{\"format\": \"tenstag-tags/2\", \"identity\": \"tfp1:abababababababababababababababababababababababababababababababab\", \"tags\": {\"Chat Run\": {\"version\": 0, \"tags\": {}}}, \"bytes\": 3, \"seen\": [{\"path\": \"/models/a.gguf\", \"time\": \"2026-11-23T14:02:11Z\"}]}",
+   "tags": null
+  },
+  {
+   "why": "a version that is not a whole number",
+   "name": "abababababababababababababababababababababababababababababababab",
+   "text": "{\"format\": \"tenstag-tags/2\", \"identity\": \"tfp1:abababababababababababababababababababababababababababababababab\", \"tags\": {\"a\": {\"version\": \"2\", \"tags\": {}}}, \"bytes\": 3, \"seen\": [{\"path\": \"/models/a.gguf\", \"time\": \"2026-11-23T14:02:11Z\"}]}",
+   "tags": null
+  },
+  {
+   "why": "a version out of range",
+   "name": "abababababababababababababababababababababababababababababababab",
+   "text": "{\"format\": \"tenstag-tags/2\", \"identity\": \"tfp1:abababababababababababababababababababababababababababababababab\", \"tags\": {\"a\": {\"version\": 4294967296, \"tags\": {}}}, \"bytes\": 3, \"seen\": [{\"path\": \"/models/a.gguf\", \"time\": \"2026-11-23T14:02:11Z\"}]}",
+   "tags": null
+  },
+  {
+   "why": "a key that is not a key",
+   "name": "abababababababababababababababababababababababababababababababab",
+   "text": "{\"format\": \"tenstag-tags/2\", \"identity\": \"tfp1:abababababababababababababababababababababababababababababababab\", \"tags\": {\"a\": {\"version\": 0, \"tags\": {\"two words\": null}}}, \"bytes\": 3, \"seen\": [{\"path\": \"/models/a.gguf\", \"time\": \"2026-11-23T14:02:11Z\"}]}",
+   "tags": null
+  },
+  {
+   "why": "an empty value",
+   "name": "abababababababababababababababababababababababababababababababab",
+   "text": "{\"format\": \"tenstag-tags/2\", \"identity\": \"tfp1:abababababababababababababababababababababababababababababababab\", \"tags\": {\"a\": {\"version\": 0, \"tags\": {\"lang\": \"\"}}}, \"bytes\": 3, \"seen\": [{\"path\": \"/models/a.gguf\", \"time\": \"2026-11-23T14:02:11Z\"}]}",
+   "tags": null
+  },
+  {
+   "why": "not JSON",
+   "name": "abababababababababababababababababababababababababababababababab",
+   "text": "{",
+   "tags": null
+  }
+ ]
+}

@@ -1,0 +1,1580 @@
+{
+ "about": "specs/listing.md and specs/names.md. Each case: build `files` in an empty folder, read `locations` (and no others) in order with `names` as the nicknames, and compare the entries in order and each `resolve`. Paths are relative to the case's folder; `files` are an entry's files (LST-017).",
+ "cases": [
+  {
+   "why": "LST-002 to LST-004, LST-006, LST-017: the walk of a folder of your own",
+   "files": [
+    {
+     "path": "models/qwen3-0.6b-Q8_0.gguf",
+     "size": 10
+    },
+    {
+     "path": "models/big/Big-Q4_K_M-00001-of-00002.gguf",
+     "size": 3
+    },
+    {
+     "path": "models/big/Big-Q4_K_M-00002-of-00002.gguf",
+     "size": 4
+    },
+    {
+     "path": "models/big/mmproj-Big-F16.gguf",
+     "size": 2
+    },
+    {
+     "path": "models/big/Big-imatrix.gguf",
+     "size": 2
+    },
+    {
+     "path": "models/half/H-00001-of-00002.gguf",
+     "size": 1
+    },
+    {
+     "path": "models/empty-Q8_0.gguf",
+     "size": 0
+    },
+    {
+     "path": "models/.hidden/x-Q8_0.gguf",
+     "size": 1
+    },
+    {
+     "path": "models/node_modules/y-Q8_0.gguf",
+     "size": 1
+    },
+    {
+     "path": "models/venv/pyvenv.cfg",
+     "text": "home = /usr\n"
+    },
+    {
+     "path": "models/venv/z-Q8_0.gguf",
+     "size": 1
+    },
+    {
+     "path": "models/a/b/c/d/e/f/deep.gguf",
+     "size": 1
+    },
+    {
+     "path": "models/a/b/c/d/e/ok.gguf",
+     "size": 1
+    },
+    {
+     "path": "models/sd/sd_xl.safetensors",
+     "size": 1048576
+    },
+    {
+     "path": "models/sd/tiny.safetensors",
+     "size": 5
+    },
+    {
+     "path": "models/sd/v1.CKPT",
+     "size": 1048576
+    },
+    {
+     "path": "models/sd/state.pt",
+     "size": 1048576
+    },
+    {
+     "path": "models/st/m-00001-of-00002.safetensors",
+     "size": 600000
+    },
+    {
+     "path": "models/st/m-00002-of-00002.safetensors",
+     "size": 600000
+    },
+    {
+     "path": "models/tiny/config.json",
+     "text": "{}"
+    },
+    {
+     "path": "models/tiny/model.safetensors",
+     "size": 3
+    },
+    {
+     "path": "models/tiny/inner-Q8_0.gguf",
+     "size": 2
+    },
+    {
+     "path": "models/tiny/README.md",
+     "text": "a card"
+    },
+    {
+     "path": "models/pipe/model_index.json",
+     "text": "{}"
+    },
+    {
+     "path": "models/pipe/unet/diffusion_pytorch_model.safetensors",
+     "size": 4
+    },
+    {
+     "path": "models/pipe/vae/diffusion_pytorch_model.bin",
+     "size": 2
+    },
+    {
+     "path": "models/pipe/.cache/x.safetensors",
+     "size": 9
+    },
+    {
+     "path": "models/lora/adapter_config.json",
+     "text": "{}"
+    },
+    {
+     "path": "models/lora/adapter_model.safetensors",
+     "size": 3
+    },
+    {
+     "path": "models/sub/loop",
+     "link": ".."
+    }
+   ],
+   "locations": [
+    {
+     "path": "models",
+     "kind": "directory"
+    }
+   ],
+   "entries": [
+    {
+     "id": "a/b/c/d/e/ok",
+     "format": "gguf",
+     "quant": "",
+     "bytes": 1,
+     "path": "models/a/b/c/d/e/ok.gguf",
+     "files": [
+      "models/a/b/c/d/e/ok.gguf"
+     ]
+    },
+    {
+     "id": "big/Big-Q4_K_M-00001-of-00002",
+     "format": "gguf",
+     "quant": "Q4_K_M",
+     "bytes": 7,
+     "path": "models/big/Big-Q4_K_M-00001-of-00002.gguf",
+     "files": [
+      "models/big/Big-Q4_K_M-00001-of-00002.gguf",
+      "models/big/Big-Q4_K_M-00002-of-00002.gguf"
+     ]
+    },
+    {
+     "id": "lora",
+     "format": "adapter",
+     "quant": "",
+     "bytes": 3,
+     "path": "models/lora",
+     "files": [
+      "models/lora/adapter_config.json",
+      "models/lora/adapter_model.safetensors"
+     ]
+    },
+    {
+     "id": "pipe",
+     "format": "diffusers",
+     "quant": "",
+     "bytes": 6,
+     "path": "models/pipe",
+     "files": [
+      "models/pipe/model_index.json",
+      "models/pipe/unet/diffusion_pytorch_model.safetensors",
+      "models/pipe/vae/diffusion_pytorch_model.bin"
+     ]
+    },
+    {
+     "id": "qwen3-0.6b-Q8_0",
+     "format": "gguf",
+     "quant": "Q8_0",
+     "bytes": 10,
+     "path": "models/qwen3-0.6b-Q8_0.gguf",
+     "files": [
+      "models/qwen3-0.6b-Q8_0.gguf"
+     ]
+    },
+    {
+     "id": "sd/sd_xl.safetensors",
+     "format": "safetensors",
+     "quant": "",
+     "bytes": 1048576,
+     "path": "models/sd/sd_xl.safetensors",
+     "files": [
+      "models/sd/sd_xl.safetensors"
+     ]
+    },
+    {
+     "id": "sd/v1.CKPT",
+     "format": "checkpoint",
+     "quant": "",
+     "bytes": 1048576,
+     "path": "models/sd/v1.CKPT",
+     "files": [
+      "models/sd/v1.CKPT"
+     ]
+    },
+    {
+     "id": "st/m-00001-of-00002.safetensors",
+     "format": "safetensors",
+     "quant": "",
+     "bytes": 1200000,
+     "path": "models/st/m-00001-of-00002.safetensors",
+     "files": [
+      "models/st/m-00001-of-00002.safetensors",
+      "models/st/m-00002-of-00002.safetensors"
+     ]
+    },
+    {
+     "id": "tiny",
+     "format": "hf-directory",
+     "quant": "",
+     "bytes": 3,
+     "path": "models/tiny",
+     "files": [
+      "models/tiny/README.md",
+      "models/tiny/config.json",
+      "models/tiny/inner-Q8_0.gguf",
+      "models/tiny/model.safetensors"
+     ]
+    }
+   ],
+   "resolve": [
+    {
+     "name": "qwen3",
+     "id": "qwen3-0.6b-Q8_0"
+    },
+    {
+     "name": "q4_k_m",
+     "id": "big/Big-Q4_K_M-00001-of-00002"
+    },
+    {
+     "name": "TINY",
+     "id": "tiny"
+    },
+    {
+     "name": "sd",
+     "error": "ambiguous"
+    },
+    {
+     "name": "mistral",
+     "error": "not found"
+    },
+    {
+     "name": "{root}/models/sd/state.pt",
+     "id": "{root}/models/sd/state.pt",
+     "format": "checkpoint"
+    },
+    {
+     "name": "{root}/models/sd/tiny.safetensors",
+     "id": "{root}/models/sd/tiny.safetensors",
+     "format": "safetensors"
+    },
+    {
+     "name": "{root}/models/venv/pyvenv.cfg",
+     "error": "not found"
+    }
+   ]
+  },
+  {
+   "why": "CFG-004 depth and LST-004 min_size on a location",
+   "files": [
+    {
+     "path": "f/a/b/m.gguf",
+     "size": 1
+    },
+    {
+     "path": "f/a/n.gguf",
+     "size": 1
+    },
+    {
+     "path": "f/small.safetensors",
+     "size": 10
+    }
+   ],
+   "locations": [
+    {
+     "path": "f",
+     "kind": "directory",
+     "depth": 2,
+     "min_size": 0
+    }
+   ],
+   "entries": [
+    {
+     "id": "a/n",
+     "format": "gguf",
+     "quant": "",
+     "bytes": 1,
+     "path": "f/a/n.gguf",
+     "files": [
+      "f/a/n.gguf"
+     ]
+    },
+    {
+     "id": "small.safetensors",
+     "format": "safetensors",
+     "quant": "",
+     "bytes": 10,
+     "path": "f/small.safetensors",
+     "files": [
+      "f/small.safetensors"
+     ]
+    }
+   ],
+   "resolve": []
+  },
+  {
+   "why": "LST-005, LST-006, NAM-003, NAM-004: the Hugging Face cache and the cached choice",
+   "files": [
+    {
+     "path": "hub/models--Org--M-GGUF/refs/main",
+     "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+     "path": "hub/models--Org--M-GGUF/refs/v1",
+     "text": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    {
+     "path": "hub/models--Org--M-GGUF/refs/abc1234",
+     "text": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+    },
+    {
+     "path": "hub/models--Org--M-GGUF/blobs/q4",
+     "size": 2
+    },
+    {
+     "path": "hub/models--Org--M-GGUF/snapshots/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/M-Q4_K_M.gguf",
+     "link": "../../blobs/q4"
+    },
+    {
+     "path": "hub/models--Org--M-GGUF/snapshots/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/M-Q8_0.gguf",
+     "size": 3
+    },
+    {
+     "path": "hub/models--Org--M-GGUF/snapshots/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/M-F16.gguf.incomplete",
+     "size": 1
+    },
+    {
+     "path": "hub/models--Org--M-GGUF/snapshots/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/mmproj-F16.gguf",
+     "size": 1
+    },
+    {
+     "path": "hub/models--Org--M-GGUF/snapshots/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb/M-Q8_0.gguf",
+     "size": 4
+    },
+    {
+     "path": "hub/models--Org--M-GGUF/snapshots/cccccccccccccccccccccccccccccccccccccccc/M-Q8_0.gguf",
+     "size": 5
+    },
+    {
+     "path": "hub/models--Org--D/refs/main",
+     "text": "dddddddddddddddddddddddddddddddddddddddd"
+    },
+    {
+     "path": "hub/models--Org--D/snapshots/dddddddddddddddddddddddddddddddddddddddd/config.json",
+     "text": "{}"
+    },
+    {
+     "path": "hub/models--Org--D/snapshots/dddddddddddddddddddddddddddddddddddddddd/model.safetensors",
+     "size": 6
+    },
+    {
+     "path": "hub/models--Org--Pipe/refs/main",
+     "text": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    },
+    {
+     "path": "hub/models--Org--Pipe/snapshots/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/model_index.json",
+     "text": "{}"
+    },
+    {
+     "path": "hub/models--Org--Pipe/snapshots/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/unet/diffusion_pytorch_model.safetensors",
+     "size": 3
+    },
+    {
+     "path": "hub/models--Org--Single/refs/main",
+     "text": "ffffffffffffffffffffffffffffffffffffffff"
+    },
+    {
+     "path": "hub/models--Org--Single/snapshots/ffffffffffffffffffffffffffffffffffffffff/sd_xl_base.safetensors",
+     "size": 7
+    },
+    {
+     "path": "hub/models--Org--Single/snapshots/ffffffffffffffffffffffffffffffffffffffff/notes.txt",
+     "text": "x"
+    },
+    {
+     "path": "hub/models--Org--Two/refs/main",
+     "text": "1111111111111111111111111111111111111111"
+    },
+    {
+     "path": "hub/models--Org--Two/snapshots/1111111111111111111111111111111111111111/a/X-Q8_0.gguf",
+     "size": 1
+    },
+    {
+     "path": "hub/models--Org--Two/snapshots/1111111111111111111111111111111111111111/b/Y-Q8_0.gguf",
+     "size": 2
+    }
+   ],
+   "locations": [
+    {
+     "path": "hub",
+     "kind": "directory"
+    }
+   ],
+   "entries": [
+    {
+     "id": "Org/D",
+     "format": "hf-directory",
+     "quant": "",
+     "bytes": 6,
+     "path": "hub/models--Org--D/snapshots/dddddddddddddddddddddddddddddddddddddddd",
+     "files": [
+      "hub/models--Org--D/snapshots/dddddddddddddddddddddddddddddddddddddddd/config.json",
+      "hub/models--Org--D/snapshots/dddddddddddddddddddddddddddddddddddddddd/model.safetensors"
+     ],
+     "hub": {
+      "repo": "Org/D",
+      "commit": "dddddddddddddddddddddddddddddddddddddddd",
+      "refs": [
+       "main"
+      ],
+      "file": ""
+     }
+    },
+    {
+     "id": "Org/M-GGUF:Q4_K_M",
+     "format": "gguf",
+     "quant": "Q4_K_M",
+     "bytes": 2,
+     "path": "hub/models--Org--M-GGUF/snapshots/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/M-Q4_K_M.gguf",
+     "files": [
+      "hub/models--Org--M-GGUF/snapshots/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/M-Q4_K_M.gguf"
+     ],
+     "hub": {
+      "repo": "Org/M-GGUF",
+      "commit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "refs": [
+       "main"
+      ],
+      "file": "M-Q4_K_M.gguf"
+     }
+    },
+    {
+     "id": "Org/M-GGUF:Q8_0",
+     "format": "gguf",
+     "quant": "Q8_0",
+     "bytes": 3,
+     "path": "hub/models--Org--M-GGUF/snapshots/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/M-Q8_0.gguf",
+     "files": [
+      "hub/models--Org--M-GGUF/snapshots/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/M-Q8_0.gguf"
+     ],
+     "hub": {
+      "repo": "Org/M-GGUF",
+      "commit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "refs": [
+       "main"
+      ],
+      "file": "M-Q8_0.gguf"
+     }
+    },
+    {
+     "id": "Org/M-GGUF:Q8_0@abc1234",
+     "format": "gguf",
+     "quant": "Q8_0",
+     "bytes": 4,
+     "path": "hub/models--Org--M-GGUF/snapshots/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb/M-Q8_0.gguf",
+     "files": [
+      "hub/models--Org--M-GGUF/snapshots/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb/M-Q8_0.gguf"
+     ],
+     "hub": {
+      "repo": "Org/M-GGUF",
+      "commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "refs": [
+       "abc1234",
+       "v1"
+      ],
+      "file": "M-Q8_0.gguf"
+     }
+    },
+    {
+     "id": "Org/M-GGUF:Q8_0@cccccccccccccccccccccccccccccccccccccccc",
+     "format": "gguf",
+     "quant": "Q8_0",
+     "bytes": 5,
+     "path": "hub/models--Org--M-GGUF/snapshots/cccccccccccccccccccccccccccccccccccccccc/M-Q8_0.gguf",
+     "files": [
+      "hub/models--Org--M-GGUF/snapshots/cccccccccccccccccccccccccccccccccccccccc/M-Q8_0.gguf"
+     ],
+     "hub": {
+      "repo": "Org/M-GGUF",
+      "commit": "cccccccccccccccccccccccccccccccccccccccc",
+      "refs": [],
+      "file": "M-Q8_0.gguf"
+     }
+    },
+    {
+     "id": "Org/Pipe",
+     "format": "diffusers",
+     "quant": "",
+     "bytes": 3,
+     "path": "hub/models--Org--Pipe/snapshots/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+     "files": [
+      "hub/models--Org--Pipe/snapshots/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/model_index.json",
+      "hub/models--Org--Pipe/snapshots/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/unet/diffusion_pytorch_model.safetensors"
+     ],
+     "hub": {
+      "repo": "Org/Pipe",
+      "commit": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "refs": [
+       "main"
+      ],
+      "file": ""
+     }
+    },
+    {
+     "id": "Org/Single/sd_xl_base.safetensors",
+     "format": "safetensors",
+     "quant": "",
+     "bytes": 7,
+     "path": "hub/models--Org--Single/snapshots/ffffffffffffffffffffffffffffffffffffffff/sd_xl_base.safetensors",
+     "files": [
+      "hub/models--Org--Single/snapshots/ffffffffffffffffffffffffffffffffffffffff/sd_xl_base.safetensors"
+     ],
+     "hub": {
+      "repo": "Org/Single",
+      "commit": "ffffffffffffffffffffffffffffffffffffffff",
+      "refs": [
+       "main"
+      ],
+      "file": "sd_xl_base.safetensors"
+     }
+    },
+    {
+     "id": "Org/Two:Q8_0",
+     "format": "gguf",
+     "quant": "Q8_0",
+     "bytes": 1,
+     "path": "hub/models--Org--Two/snapshots/1111111111111111111111111111111111111111/a/X-Q8_0.gguf",
+     "files": [
+      "hub/models--Org--Two/snapshots/1111111111111111111111111111111111111111/a/X-Q8_0.gguf"
+     ],
+     "hub": {
+      "repo": "Org/Two",
+      "commit": "1111111111111111111111111111111111111111",
+      "refs": [
+       "main"
+      ],
+      "file": "a/X-Q8_0.gguf"
+     }
+    },
+    {
+     "id": "Org/Two/b/Y-Q8_0.gguf",
+     "format": "gguf",
+     "quant": "Q8_0",
+     "bytes": 2,
+     "path": "hub/models--Org--Two/snapshots/1111111111111111111111111111111111111111/b/Y-Q8_0.gguf",
+     "files": [
+      "hub/models--Org--Two/snapshots/1111111111111111111111111111111111111111/b/Y-Q8_0.gguf"
+     ],
+     "hub": {
+      "repo": "Org/Two",
+      "commit": "1111111111111111111111111111111111111111",
+      "refs": [
+       "main"
+      ],
+      "file": "b/Y-Q8_0.gguf"
+     }
+    }
+   ],
+   "resolve": [
+    {
+     "name": "Org/M-GGUF",
+     "id": "Org/M-GGUF:Q4_K_M"
+    },
+    {
+     "name": "hf.co/org/m-gguf",
+     "id": "Org/M-GGUF:Q4_K_M"
+    },
+    {
+     "name": "Org/M-GGUF:q8_0",
+     "id": "Org/M-GGUF:Q8_0"
+    },
+    {
+     "name": "Org/M-GGUF:Q4_K_M@v1",
+     "error": "not found"
+    },
+    {
+     "name": "Org/M-GGUF@v1",
+     "id": "Org/M-GGUF:Q8_0@abc1234"
+    },
+    {
+     "name": "Org/M-GGUF@abc1234",
+     "id": "Org/M-GGUF:Q8_0@abc1234"
+    },
+    {
+     "name": "Org/M-GGUF@CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+     "id": "Org/M-GGUF:Q8_0@cccccccccccccccccccccccccccccccccccccccc"
+    },
+    {
+     "name": "Org/M-GGUF@ccccccc",
+     "error": "not found"
+    },
+    {
+     "name": "Org/D",
+     "id": "Org/D"
+    },
+    {
+     "name": "Org/Pipe",
+     "id": "Org/Pipe"
+    },
+    {
+     "name": "Org/Two:Q8_0",
+     "id": "Org/Two:Q8_0"
+    },
+    {
+     "name": "Org/Missing",
+     "error": "not found"
+    },
+    {
+     "name": "Org/Single/sd_xl_base.safetensors",
+     "id": "Org/Single/sd_xl_base.safetensors"
+    }
+   ]
+  },
+  {
+   "why": "LST-014: llama.cpp's old flat files are named through their manifests only",
+   "files": [
+    {
+     "path": "cache/ggml-org_gemma-3-1b-it-GGUF_gemma-3-1b-it-Q4_K_M.gguf",
+     "size": 3
+    },
+    {
+     "path": "cache/manifest=ggml-org=gemma-3-1b-it-GGUF=latest.json",
+     "json": {
+      "ggufFile": {
+       "rfilename": "gemma-3-1b-it-Q4_K_M.gguf"
+      }
+     }
+    },
+    {
+     "path": "cache/some_user_repo_x-Q8_0.gguf",
+     "size": 2
+    },
+    {
+     "path": "cache/model-from-url.gguf",
+     "size": 1
+    }
+   ],
+   "locations": [
+    {
+     "path": "cache",
+     "kind": "directory"
+    }
+   ],
+   "entries": [
+    {
+     "id": "ggml-org/gemma-3-1b-it-GGUF:latest",
+     "format": "gguf",
+     "quant": "Q4_K_M",
+     "bytes": 3,
+     "path": "cache/ggml-org_gemma-3-1b-it-GGUF_gemma-3-1b-it-Q4_K_M.gguf",
+     "files": [
+      "cache/ggml-org_gemma-3-1b-it-GGUF_gemma-3-1b-it-Q4_K_M.gguf"
+     ]
+    },
+    {
+     "id": "model-from-url",
+     "format": "gguf",
+     "quant": "URL",
+     "bytes": 1,
+     "path": "cache/model-from-url.gguf",
+     "files": [
+      "cache/model-from-url.gguf"
+     ]
+    },
+    {
+     "id": "some_user_repo_x-Q8_0",
+     "format": "gguf",
+     "quant": "Q8_0",
+     "bytes": 2,
+     "path": "cache/some_user_repo_x-Q8_0.gguf",
+     "files": [
+      "cache/some_user_repo_x-Q8_0.gguf"
+     ]
+    }
+   ],
+   "resolve": [
+    {
+     "name": "ggml-org/gemma-3-1b-it-GGUF:latest",
+     "id": "ggml-org/gemma-3-1b-it-GGUF:latest"
+    }
+   ]
+  },
+  {
+   "why": "LST-007: LM Studio's models, three levels down, projectors left out",
+   "files": [
+    {
+     "path": "lms/lmstudio-community/Qwen3-0.6B-GGUF/Qwen3-0.6B-Q8_0.gguf",
+     "size": 2
+    },
+    {
+     "path": "lms/lmstudio-community/Qwen3-0.6B-GGUF/mmproj-Qwen3-0.6B-F16.gguf",
+     "size": 1
+    },
+    {
+     "path": "lms/lmstudio-community/Qwen3-0.6B-GGUF/MMPROJ-Qwen3-Q8_0.gguf",
+     "size": 1
+    },
+    {
+     "path": "lms/loose-Q8_0.gguf",
+     "size": 1
+    },
+    {
+     "path": "lms/a/b/c/deep-Q8_0.gguf",
+     "size": 1
+    }
+   ],
+   "locations": [
+    {
+     "path": "lms",
+     "kind": "lmstudio"
+    }
+   ],
+   "entries": [
+    {
+     "id": "lmstudio-community/Qwen3-0.6B-GGUF/Qwen3-0.6B-Q8_0",
+     "format": "gguf",
+     "quant": "Q8_0",
+     "bytes": 2,
+     "path": "lms/lmstudio-community/Qwen3-0.6B-GGUF/Qwen3-0.6B-Q8_0.gguf",
+     "files": [
+      "lms/lmstudio-community/Qwen3-0.6B-GGUF/Qwen3-0.6B-Q8_0.gguf"
+     ]
+    }
+   ],
+   "resolve": []
+  },
+  {
+   "why": "LST-008: Ollama's two trees, a manifest list, a split model, a safetensors model, a blob that is not GGUF; one file under several names in one location",
+   "files": [
+    {
+     "path": "o/blobs/sha256-1111111111111111111111111111111111111111111111111111111111111111",
+     "text": "GGUF-one"
+    },
+    {
+     "path": "o/blobs/sha256-2222222222222222222222222222222222222222222222222222222222222222",
+     "text": "GGUF-part-1"
+    },
+    {
+     "path": "o/blobs/sha256-3333333333333333333333333333333333333333333333333333333333333333",
+     "text": "GGUF-part-2"
+    },
+    {
+     "path": "o/blobs/sha256-4444444444444444444444444444444444444444444444444444444444444444",
+     "text": "nope"
+    },
+    {
+     "path": "o/blobs/sha256-5555555555555555555555555555555555555555555555555555555555555555",
+     "text": "safetensors-bytes"
+    },
+    {
+     "path": "o/blobs/sha256-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "json": {
+      "model_format": "gguf",
+      "file_type": "Q4_K_M"
+     }
+    },
+    {
+     "path": "o/blobs/sha256-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+     "json": {
+      "file_type": "Q8_0"
+     }
+    },
+    {
+     "path": "o/blobs/sha256-cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "json": {
+      "model_format": "safetensors",
+      "file_type": "BF16"
+     }
+    },
+    {
+     "path": "o/blobs/sha256-dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+     "json": {
+      "schemaVersion": 2,
+      "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+      "config": {
+       "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "layers": [
+       {
+        "mediaType": "application/vnd.ollama.image.model",
+        "digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "size": 1
+       }
+      ]
+     }
+    },
+    {
+     "path": "o/manifests-v2/ollama.com/library/qwen3/0.6b",
+     "json": {
+      "schemaVersion": 2,
+      "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+      "config": {
+       "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "layers": [
+       {
+        "mediaType": "application/vnd.ollama.image.model",
+        "digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "size": 1
+       }
+      ]
+     }
+    },
+    {
+     "path": "o/manifests-v2/ollama.com/library/big/latest",
+     "json": {
+      "schemaVersion": 2,
+      "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+      "config": {
+       "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "layers": [
+       {
+        "mediaType": "application/vnd.ollama.image.model",
+        "digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "size": 1
+       },
+       {
+        "mediaType": "application/vnd.ollama.image.model",
+        "digest": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "size": 1
+       }
+      ]
+     }
+    },
+    {
+     "path": "o/manifests-v2/ollama.com/library/listed/latest",
+     "json": {
+      "mediaType": "application/vnd.ollama.manifest.list.v2+json",
+      "manifests": [
+       {
+        "format": "safetensors",
+        "digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+       },
+       {
+        "format": "gguf",
+        "digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+       }
+      ]
+     }
+    },
+    {
+     "path": "o/manifests/registry.ollama.ai/library/qwen3/0.6b",
+     "json": {
+      "schemaVersion": 2,
+      "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+      "config": {
+       "digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "layers": [
+       {
+        "mediaType": "application/vnd.ollama.image.model",
+        "digest": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "size": 1
+       }
+      ]
+     }
+    },
+    {
+     "path": "o/manifests/registry.ollama.ai/library/old/7b",
+     "json": {
+      "schemaVersion": 2,
+      "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+      "config": {
+       "digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "layers": [
+       {
+        "mediaType": "application/vnd.ollama.image.model",
+        "digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "size": 1
+       }
+      ]
+     }
+    },
+    {
+     "path": "o/manifests/registry.ollama.ai/user/st/latest",
+     "json": {
+      "schemaVersion": 2,
+      "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+      "config": {
+       "digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      "layers": [
+       {
+        "mediaType": "application/vnd.ollama.image.tensor",
+        "digest": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "size": 1
+       }
+      ]
+     }
+    },
+    {
+     "path": "o/manifests/registry.ollama.ai/user/st2/latest",
+     "json": {
+      "schemaVersion": 2,
+      "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+      "config": {
+       "digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      "layers": [
+       {
+        "mediaType": "application/vnd.ollama.image.tensor",
+        "digest": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "size": 1
+       },
+       {
+        "mediaType": "application/vnd.ollama.image.tensor",
+        "digest": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "size": 1
+       }
+      ]
+     }
+    },
+    {
+     "path": "o/manifests/example.com%3A5000/ns/m/v1",
+     "json": {
+      "schemaVersion": 2,
+      "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+      "config": {
+       "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "layers": [
+       {
+        "mediaType": "application/vnd.ollama.image.model",
+        "digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "size": 1
+       }
+      ]
+     }
+    },
+    {
+     "path": "o/manifests/example.com%3A5000/ns/bad/v1",
+     "json": {
+      "schemaVersion": 2,
+      "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+      "config": {
+       "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "layers": [
+       {
+        "mediaType": "application/vnd.ollama.image.model",
+        "digest": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "size": 1
+       }
+      ]
+     }
+    }
+   ],
+   "locations": [
+    {
+     "path": "o",
+     "kind": "ollama"
+    }
+   ],
+   "entries": [
+    {
+     "id": "ollama:big:latest",
+     "format": "gguf",
+     "quant": "Q4_K_M",
+     "bytes": 22,
+     "path": "o/blobs/sha256-2222222222222222222222222222222222222222222222222222222222222222",
+     "files": [
+      "o/blobs/sha256-2222222222222222222222222222222222222222222222222222222222222222",
+      "o/blobs/sha256-3333333333333333333333333333333333333333333333333333333333333333"
+     ],
+     "parts": [
+      "o/blobs/sha256-2222222222222222222222222222222222222222222222222222222222222222",
+      "o/blobs/sha256-3333333333333333333333333333333333333333333333333333333333333333"
+     ]
+    },
+    {
+     "id": "ollama:listed:latest",
+     "format": "gguf",
+     "quant": "Q4_K_M",
+     "bytes": 8,
+     "path": "o/blobs/sha256-1111111111111111111111111111111111111111111111111111111111111111",
+     "files": [
+      "o/blobs/sha256-1111111111111111111111111111111111111111111111111111111111111111"
+     ]
+    },
+    {
+     "id": "ollama:qwen3:0.6b",
+     "format": "gguf",
+     "quant": "Q4_K_M",
+     "bytes": 8,
+     "path": "o/blobs/sha256-1111111111111111111111111111111111111111111111111111111111111111",
+     "files": [
+      "o/blobs/sha256-1111111111111111111111111111111111111111111111111111111111111111"
+     ]
+    },
+    {
+     "id": "ollama:example.com:5000/ns/m:v1",
+     "format": "gguf",
+     "quant": "Q4_K_M",
+     "bytes": 8,
+     "path": "o/blobs/sha256-1111111111111111111111111111111111111111111111111111111111111111",
+     "files": [
+      "o/blobs/sha256-1111111111111111111111111111111111111111111111111111111111111111"
+     ]
+    },
+    {
+     "id": "ollama:old:7b",
+     "format": "gguf",
+     "quant": "Q8_0",
+     "bytes": 8,
+     "path": "o/blobs/sha256-1111111111111111111111111111111111111111111111111111111111111111",
+     "files": [
+      "o/blobs/sha256-1111111111111111111111111111111111111111111111111111111111111111"
+     ]
+    },
+    {
+     "id": "ollama:user/st:latest",
+     "format": "other",
+     "quant": "BF16",
+     "bytes": 17,
+     "path": "o/blobs",
+     "files": [],
+     "note": "an Ollama safetensors model, not a GGUF file"
+    },
+    {
+     "id": "ollama:user/st2:latest",
+     "format": "other",
+     "quant": "BF16",
+     "bytes": 17,
+     "path": "o/blobs",
+     "files": [],
+     "note": "an Ollama safetensors model, not a GGUF file"
+    }
+   ],
+   "resolve": [
+    {
+     "name": "ollama:QWEN3:0.6b",
+     "id": "ollama:qwen3:0.6b"
+    }
+   ]
+  },
+  {
+   "why": "LST-009: GPT4All: every .gguf file within the depth, downloads and remote models left out",
+   "files": [
+    {
+     "path": "g/Meta-Llama-3-8B-Instruct.Q4_0.gguf",
+     "size": 2
+    },
+    {
+     "path": "g/mine/phi3.gguf",
+     "size": 1
+    },
+    {
+     "path": "g/incomplete-mistral-7b.Q4_0.gguf",
+     "size": 1
+    },
+    {
+     "path": "g/gpt-4o-capi.rmodel",
+     "text": "{\"apiKey\": \"secret\"}"
+    }
+   ],
+   "locations": [
+    {
+     "path": "g",
+     "kind": "gpt4all"
+    }
+   ],
+   "entries": [
+    {
+     "id": "Meta-Llama-3-8B-Instruct.Q4_0",
+     "format": "gguf",
+     "quant": "Q4_0",
+     "bytes": 2,
+     "path": "g/Meta-Llama-3-8B-Instruct.Q4_0.gguf",
+     "files": [
+      "g/Meta-Llama-3-8B-Instruct.Q4_0.gguf"
+     ]
+    },
+    {
+     "id": "mine/phi3",
+     "format": "gguf",
+     "quant": "",
+     "bytes": 1,
+     "path": "g/mine/phi3.gguf",
+     "files": [
+      "g/mine/phi3.gguf"
+     ]
+    }
+   ],
+   "resolve": []
+  },
+  {
+   "why": "LST-010: ModelScope's current and older layouts, a link read once",
+   "files": [
+    {
+     "path": "ms/models/Qwen--Qwen3-0.6B-GGUF/snapshots/master/Qwen3-0.6B-Q8_0.gguf",
+     "size": 3
+    },
+    {
+     "path": "ms/models/Qwen--Qwen3-0.6B-GGUF/snapshots/v1/Qwen3-0.6B-Q8_0.gguf",
+     "size": 4
+    },
+    {
+     "path": "ms/models/Qwen/Qwen3-0.6B-GGUF",
+     "link": "../Qwen--Qwen3-0.6B-GGUF/snapshots/master"
+    },
+    {
+     "path": "ms/models/Qwen/Qwen3___5-GGUF/x-Q4_0.gguf",
+     "size": 5
+    },
+    {
+     "path": "ms/hub/models/Old/M/config.json",
+     "text": "{}"
+    },
+    {
+     "path": "ms/hub/models/Old/M/model.safetensors",
+     "size": 6
+    },
+    {
+     "path": "ms/models/._____temp/t-Q8_0.gguf",
+     "size": 1
+    }
+   ],
+   "locations": [
+    {
+     "path": "ms",
+     "kind": "modelscope"
+    }
+   ],
+   "entries": [
+    {
+     "id": "modelscope:Qwen/Qwen3-0.6B-GGUF:Q8_0",
+     "format": "gguf",
+     "quant": "Q8_0",
+     "bytes": 3,
+     "path": "ms/models/Qwen--Qwen3-0.6B-GGUF/snapshots/master/Qwen3-0.6B-Q8_0.gguf",
+     "files": [
+      "ms/models/Qwen--Qwen3-0.6B-GGUF/snapshots/master/Qwen3-0.6B-Q8_0.gguf"
+     ]
+    },
+    {
+     "id": "modelscope:Qwen/Qwen3-0.6B-GGUF:Q8_0@v1",
+     "format": "gguf",
+     "quant": "Q8_0",
+     "bytes": 4,
+     "path": "ms/models/Qwen--Qwen3-0.6B-GGUF/snapshots/v1/Qwen3-0.6B-Q8_0.gguf",
+     "files": [
+      "ms/models/Qwen--Qwen3-0.6B-GGUF/snapshots/v1/Qwen3-0.6B-Q8_0.gguf"
+     ]
+    },
+    {
+     "id": "modelscope:Qwen/Qwen3.5-GGUF:Q4_0",
+     "format": "gguf",
+     "quant": "Q4_0",
+     "bytes": 5,
+     "path": "ms/models/Qwen/Qwen3___5-GGUF/x-Q4_0.gguf",
+     "files": [
+      "ms/models/Qwen/Qwen3___5-GGUF/x-Q4_0.gguf"
+     ]
+    },
+    {
+     "id": "modelscope:Old/M",
+     "format": "hf-directory",
+     "quant": "",
+     "bytes": 6,
+     "path": "ms/hub/models/Old/M",
+     "files": [
+      "ms/hub/models/Old/M/config.json",
+      "ms/hub/models/Old/M/model.safetensors"
+     ]
+    }
+   ],
+   "resolve": [
+    {
+     "name": "Qwen/Qwen3-0.6B-GGUF",
+     "error": "not found"
+    }
+   ]
+  },
+  {
+   "why": "LST-011, LST-019: Jan's model.yml files; a download in progress is not a model",
+   "files": [
+    {
+     "path": "jan/llamacpp/models/Qwen3-0.6B-Q8_0/model.gguf",
+     "size": 3
+    },
+    {
+     "path": "jan/llamacpp/models/Qwen3-0.6B-Q8_0/mmproj.gguf",
+     "size": 1
+    },
+    {
+     "path": "jan/llamacpp/models/Qwen3-0.6B-Q8_0/model.yml",
+     "text": "model_path: llamacpp/models/Qwen3-0.6B-Q8_0/model.gguf\nname: 'Qwen3 0.6B'\nsize_bytes: 3\n"
+    },
+    {
+     "path": "jan/llamacpp/models/unsloth/gemma-3-1b/model.gguf.tmp",
+     "size": 1
+    },
+    {
+     "path": "jan/elsewhere/mine.gguf",
+     "size": 5
+    },
+    {
+     "path": "jan/llamacpp/models/imported/mine/model.yml",
+     "text": "model_path: \"{root}/jan/elsewhere/mine.gguf\"\n"
+    },
+    {
+     "path": "jan/llamacpp/models/odd/model.yml",
+     "text": "model_path: [1]\n"
+    }
+   ],
+   "locations": [
+    {
+     "path": "jan",
+     "kind": "jan"
+    }
+   ],
+   "entries": [
+    {
+     "id": "jan:Qwen3-0.6B-Q8_0",
+     "format": "gguf",
+     "quant": "Q8_0",
+     "bytes": 3,
+     "path": "jan/llamacpp/models/Qwen3-0.6B-Q8_0/model.gguf",
+     "files": [
+      "jan/llamacpp/models/Qwen3-0.6B-Q8_0/model.gguf"
+     ]
+    },
+    {
+     "id": "jan:imported/mine",
+     "format": "gguf",
+     "quant": "",
+     "bytes": 5,
+     "path": "jan/elsewhere/mine.gguf",
+     "files": [
+      "jan/elsewhere/mine.gguf"
+     ]
+    }
+   ],
+   "resolve": []
+  },
+  {
+   "why": "LST-012: Docker Model Runner: one entry per tag, not while a layer is downloading",
+   "files": [
+    {
+     "path": "d/layout.json",
+     "json": {
+      "version": "1.0.0"
+     }
+    },
+    {
+     "path": "d/models.json",
+     "json": {
+      "models": [
+       {
+        "id": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "tags": [
+         "ai/smollm2:latest",
+         "ai/smollm2:360M-Q4_K_M"
+        ]
+       },
+       {
+        "id": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "tags": [
+         "ai/partial:latest"
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "path": "d/manifests/sha256/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+     "json": {
+      "layers": [
+       {
+        "mediaType": "application/vnd.docker.ai.gguf.v3",
+        "digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+       },
+       {
+        "mediaType": "application/vnd.docker.ai.license",
+        "digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+       }
+      ]
+     }
+    },
+    {
+     "path": "d/blobs/sha256/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+     "text": "1234"
+    },
+    {
+     "path": "d/blobs/sha256/dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+     "text": "MIT"
+    },
+    {
+     "path": "d/manifests/sha256/cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+     "json": {
+      "layers": [
+       {
+        "mediaType": "application/vnd.docker.ai.gguf.v3",
+        "digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+       }
+      ]
+     }
+    },
+    {
+     "path": "d/blobs/sha256/cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.incomplete",
+     "text": "1"
+    }
+   ],
+   "locations": [
+    {
+     "path": "d",
+     "kind": "docker"
+    }
+   ],
+   "entries": [
+    {
+     "id": "docker:ai/smollm2:latest",
+     "format": "gguf",
+     "quant": "",
+     "bytes": 4,
+     "path": "d/blobs/sha256/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+     "files": [
+      "d/blobs/sha256/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+     ]
+    },
+    {
+     "id": "docker:ai/smollm2:360M-Q4_K_M",
+     "format": "gguf",
+     "quant": "",
+     "bytes": 4,
+     "path": "d/blobs/sha256/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+     "files": [
+      "d/blobs/sha256/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+     ]
+    }
+   ],
+   "resolve": []
+  },
+  {
+   "why": "LST-013: RamaLama: one entry per tag; a tag's JSON ref before its text ref; a partial model left out",
+   "files": [
+    {
+     "path": "r/store/huggingface/Qwen/Qwen3-0.6B-GGUF/blobs/sha256-aa",
+     "size": 3
+    },
+    {
+     "path": "r/store/huggingface/Qwen/Qwen3-0.6B-GGUF/snapshots/s1/Qwen3-0.6B-Q8_0.gguf",
+     "size": 3
+    },
+    {
+     "path": "r/store/huggingface/Qwen/Qwen3-0.6B-GGUF/snapshots/s1/mmproj-F16.gguf",
+     "size": 1
+    },
+    {
+     "path": "r/store/huggingface/Qwen/Qwen3-0.6B-GGUF/snapshots/s2/Qwen3-0.6B-Q4_0.gguf",
+     "size": 4
+    },
+    {
+     "path": "r/store/huggingface/Qwen/Qwen3-0.6B-GGUF/refs/latest.json",
+     "json": {
+      "hash": "s1",
+      "files": [
+       {
+        "name": "Qwen3-0.6B-Q8_0.gguf",
+        "type": "gguf"
+       },
+       {
+        "name": "mmproj-F16.gguf",
+        "type": "mmproj"
+       }
+      ]
+     }
+    },
+    {
+     "path": "r/store/huggingface/Qwen/Qwen3-0.6B-GGUF/refs/latest",
+     "text": "s2\nQwen3-0.6B-Q4_0.gguf\n"
+    },
+    {
+     "path": "r/store/huggingface/Qwen/Qwen3-0.6B-GGUF/refs/old",
+     "text": "s2\nQwen3-0.6B-Q4_0.gguf\nmmproj-x.gguf\n"
+    },
+    {
+     "path": "r/store/huggingface/Qwen/Qwen3-0.6B-GGUF/refs/partial.json",
+     "json": {
+      "hash": "s3",
+      "files": [
+       {
+        "name": "x.gguf",
+        "type": "gguf"
+       }
+      ]
+     }
+    },
+    {
+     "path": "r/store/ollama/smollm/blobs/x",
+     "size": 1
+    },
+    {
+     "path": "r/store/ollama/smollm/snapshots/s/smollm.gguf",
+     "size": 2
+    },
+    {
+     "path": "r/store/ollama/smollm/refs/latest.json",
+     "json": {
+      "hash": "s",
+      "files": [
+       {
+        "name": "smollm.gguf",
+        "type": "gguf"
+       }
+      ]
+     }
+    }
+   ],
+   "locations": [
+    {
+     "path": "r",
+     "kind": "ramalama"
+    }
+   ],
+   "entries": [
+    {
+     "id": "huggingface://Qwen/Qwen3-0.6B-GGUF:latest",
+     "format": "gguf",
+     "quant": "Q8_0",
+     "bytes": 3,
+     "path": "r/store/huggingface/Qwen/Qwen3-0.6B-GGUF/snapshots/s1/Qwen3-0.6B-Q8_0.gguf",
+     "files": [
+      "r/store/huggingface/Qwen/Qwen3-0.6B-GGUF/snapshots/s1/Qwen3-0.6B-Q8_0.gguf"
+     ]
+    },
+    {
+     "id": "ollama://smollm:latest",
+     "format": "gguf",
+     "quant": "",
+     "bytes": 2,
+     "path": "r/store/ollama/smollm/snapshots/s/smollm.gguf",
+     "files": [
+      "r/store/ollama/smollm/snapshots/s/smollm.gguf"
+     ]
+    }
+   ],
+   "resolve": [],
+   "note": "refs/old is missing mmproj-x.gguf from snapshot s2, so it has no entry"
+  },
+  {
+   "why": "LST-015: a file reached twice is listed once; an id two locations share is told apart",
+   "files": [
+    {
+     "path": "a/m-Q8_0.gguf",
+     "size": 1
+    },
+    {
+     "path": "b/m-Q8_0.gguf",
+     "size": 2
+    },
+    {
+     "path": "b/same-Q8_0.gguf",
+     "link": "../a/m-Q8_0.gguf"
+    }
+   ],
+   "locations": [
+    {
+     "path": "a",
+     "kind": "directory"
+    },
+    {
+     "path": "b",
+     "kind": "directory"
+    },
+    {
+     "path": "a",
+     "kind": "directory"
+    }
+   ],
+   "entries": [
+    {
+     "id": "m-Q8_0",
+     "format": "gguf",
+     "quant": "Q8_0",
+     "bytes": 1,
+     "path": "a/m-Q8_0.gguf",
+     "files": [
+      "a/m-Q8_0.gguf"
+     ]
+    },
+    {
+     "id": "{root}/b:m-Q8_0",
+     "format": "gguf",
+     "quant": "Q8_0",
+     "bytes": 2,
+     "path": "b/m-Q8_0.gguf",
+     "files": [
+      "b/m-Q8_0.gguf"
+     ]
+    }
+   ],
+   "resolve": [
+    {
+     "name": "m-q8_0",
+     "id": "m-Q8_0"
+    }
+   ]
+  },
+  {
+   "why": "NAM-001 step 2, NAM-002: nicknames, at most four in a row",
+   "files": [
+    {
+     "path": "n/qwen3-0.6b-Q8_0.gguf",
+     "size": 1
+    }
+   ],
+   "locations": [
+    {
+     "path": "n",
+     "kind": "directory"
+    }
+   ],
+   "names": {
+    "q": "qwen3",
+    "chain1": "chain2",
+    "chain2": "chain3",
+    "chain3": "chain4",
+    "chain4": "chain5",
+    "chain5": "qwen3",
+    "gone": "Org/Missing"
+   },
+   "entries": [
+    {
+     "id": "qwen3-0.6b-Q8_0",
+     "format": "gguf",
+     "quant": "Q8_0",
+     "bytes": 1,
+     "path": "n/qwen3-0.6b-Q8_0.gguf",
+     "files": [
+      "n/qwen3-0.6b-Q8_0.gguf"
+     ]
+    }
+   ],
+   "resolve": [
+    {
+     "name": "q",
+     "id": "qwen3-0.6b-Q8_0"
+    },
+    {
+     "name": "chain2",
+     "id": "qwen3-0.6b-Q8_0"
+    },
+    {
+     "name": "chain1",
+     "error": "not found"
+    },
+    {
+     "name": "gone",
+     "error": "not found"
+    }
+   ]
+  }
+ ]
+}

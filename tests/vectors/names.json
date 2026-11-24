@@ -1,0 +1,101 @@
+{
+ "about": "specs/names.md NAM-003: whether each name is a Hugging Face repository name, and its parts",
+ "names": [
+  {
+   "name": "Qwen/Qwen3-0.6B-GGUF",
+   "repo": "Qwen/Qwen3-0.6B-GGUF",
+   "quant": null,
+   "revision": null
+  },
+  {
+   "name": "hf.co/Qwen/Qwen3-0.6B-GGUF:q8_0@main",
+   "repo": "Qwen/Qwen3-0.6B-GGUF",
+   "quant": "q8_0",
+   "revision": "main"
+  },
+  {
+   "name": "huggingface.co/a/b@refs/pr/1",
+   "repo": "a/b",
+   "quant": null,
+   "revision": "refs/pr/1"
+  },
+  {
+   "name": "o/m:v1.5",
+   "repo": "o/m",
+   "quant": "v1.5",
+   "revision": null
+  },
+  {
+   "name": "o/m:Q4_K_M@cccccccccccccccccccccccccccccccccccccccc",
+   "repo": "o/m",
+   "quant": "Q4_K_M",
+   "revision": "cccccccccccccccccccccccccccccccccccccccc"
+  },
+  {
+   "name": "a_1/b.c-d",
+   "repo": "a_1/b.c-d",
+   "quant": null,
+   "revision": null
+  },
+  {
+   "name": "qwen3",
+   "repo": null
+  },
+  {
+   "name": "a/b/c",
+   "repo": null
+  },
+  {
+   "name": "/abs",
+   "repo": null
+  },
+  {
+   "name": "a/.b",
+   "repo": null
+  },
+  {
+   "name": "a/b-",
+   "repo": null
+  },
+  {
+   "name": "a/b:",
+   "repo": null
+  },
+  {
+   "name": "a//b",
+   "repo": null
+  },
+  {
+   "name": "a/b@",
+   "repo": null
+  },
+  {
+   "name": "a/b:x/y.gguf",
+   "repo": null
+  },
+  {
+   "name": "a/b@x..y",
+   "repo": null
+  },
+  {
+   "name": "a/b@x y",
+   "repo": null
+  },
+  {
+   "name": "a/b:Q4 K",
+   "repo": null
+  },
+  {
+   "name": "a/b:c:d",
+   "repo": null
+  },
+  {
+   "name": "ollama:qwen3:0.6b",
+   "repo": null
+  },
+  {
+   "name": "a/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+   "repo": null
+  }
+ ]
+}

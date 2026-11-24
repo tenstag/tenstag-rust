@@ -1,0 +1,234 @@
+{
+ "about": "specs/fingerprint.md; files are generated as tools/reference.py `content` describes",
+ "splitmix64": {
+  "seed": 0,
+  "first": [
+   "16294208416658607535",
+   "7960286522194355700",
+   "487617019471545679"
+  ]
+ },
+ "files": [
+  {
+   "name": "empty",
+   "why": "an empty file: the prefix and a size of 0",
+   "seed": 1,
+   "size": 0,
+   "identity": "tfp1:80c2ac3798614b2c2d78538bd8f1ce41c84e9cd64ab1803917a6a22c47723653"
+  },
+  {
+   "name": "one byte",
+   "why": "a file read whole",
+   "seed": 2,
+   "size": 1,
+   "identity": "tfp1:23059e5d3b59aed0a9192a66879d2b1eec70fa7b924117fc5ef1e7e5fca34bb3"
+  },
+  {
+   "name": "one block",
+   "why": "a file read whole",
+   "seed": 3,
+   "size": 4096,
+   "identity": "tfp1:64b5ee69fd38d463a344f87c0d4682ba7deb2c5921f32e5041451af550e1b254"
+  },
+  {
+   "name": "whole",
+   "why": "the largest file read whole (TFP-003)",
+   "seed": 4,
+   "size": 34603008,
+   "identity": "tfp1:a9ccfac14023d4c13dc82407e1442c9f64ff811c9c44620ce45b54f9e5828c61"
+  },
+  {
+   "name": "whole + 1",
+   "why": "the smallest file sampled (TFP-004): every run is one block",
+   "seed": 5,
+   "size": 34603009,
+   "identity": "tfp1:52bc8f1101e98040389cf497e43f207f32f5bb9cc93442f0d8ed3ae2a489a0a7",
+   "samples": {
+    "first": [
+     16777216,
+     16781312,
+     16785408,
+     16789504
+    ],
+    "last": [
+     33538048,
+     33542144,
+     33546240,
+     33550336
+    ]
+   }
+  },
+  {
+   "name": "40 MiB + 123",
+   "why": "a sampled file whose tail is not aligned to a block",
+   "seed": 6,
+   "size": 41943163,
+   "identity": "tfp1:2938ef773401545591b3470e7078205ee2bd9c5a7b8833ce2a87b910e960fb37",
+   "samples": {
+    "first": [
+     16777216,
+     16781312,
+     16789504,
+     16793600
+    ],
+    "last": [
+     40869888,
+     40873984,
+     40882176,
+     40886272
+    ]
+   }
+  },
+  {
+   "name": "40 MiB + 123, edited in a sampled block",
+   "why": "one byte changed in the first chosen block: a different identity",
+   "seed": 6,
+   "size": 41943163,
+   "edit": {
+    "offset": 16777223,
+    "byte": 20
+   },
+   "identity": "tfp1:a2c15cbc339f23cadca438856621597194087f5ad189bfc93fb8c4cc01443e97",
+   "samples": {
+    "first": [
+     16777216,
+     16781312,
+     16789504,
+     16793600
+    ],
+    "last": [
+     40869888,
+     40873984,
+     40882176,
+     40886272
+    ]
+   }
+  },
+  {
+   "name": "40 MiB + 123, edited between samples",
+   "why": "one byte changed in a block no run chose: the same identity (fingerprint.md, What it misses)",
+   "seed": 6,
+   "size": 41943163,
+   "edit": {
+    "offset": 16785415,
+    "byte": 26
+   },
+   "identity": "tfp1:2938ef773401545591b3470e7078205ee2bd9c5a7b8833ce2a87b910e960fb37",
+   "samples": {
+    "first": [
+     16777216,
+     16781312,
+     16789504,
+     16793600
+    ],
+    "last": [
+     40869888,
+     40873984,
+     40882176,
+     40886272
+    ]
+   }
+  },
+  {
+   "name": "100 MiB",
+   "why": "a larger sampled file",
+   "seed": 7,
+   "size": 104857600,
+   "identity": "tfp1:5dcdde42d7fd3372045ece4050d65f1f444ceb659b1533bc9f52c344f437cd17",
+   "samples": {
+    "first": [
+     16785408,
+     16801792,
+     16822272,
+     16838656
+    ],
+    "last": [
+     103735296,
+     103751680,
+     103780352,
+     103796736
+    ]
+   }
+  }
+ ],
+ "sets": [
+  {
+   "why": "no members: no identity",
+   "members": [],
+   "identity": null
+  },
+  {
+   "why": "one member: its own identity",
+   "members": [
+    "tfp1:23059e5d3b59aed0a9192a66879d2b1eec70fa7b924117fc5ef1e7e5fca34bb3"
+   ],
+   "identity": "tfp1:23059e5d3b59aed0a9192a66879d2b1eec70fa7b924117fc5ef1e7e5fca34bb3"
+  },
+  {
+   "why": "two members",
+   "members": [
+    "tfp1:23059e5d3b59aed0a9192a66879d2b1eec70fa7b924117fc5ef1e7e5fca34bb3",
+    "tfp1:64b5ee69fd38d463a344f87c0d4682ba7deb2c5921f32e5041451af550e1b254"
+   ],
+   "identity": "tfp1:6af4e77fac6f0c1862a753dc2fbc8e9d5371e028a2581519f63dec72d295a458"
+  },
+  {
+   "why": "the same two in the other order: the same identity",
+   "members": [
+    "tfp1:64b5ee69fd38d463a344f87c0d4682ba7deb2c5921f32e5041451af550e1b254",
+    "tfp1:23059e5d3b59aed0a9192a66879d2b1eec70fa7b924117fc5ef1e7e5fca34bb3"
+   ],
+   "identity": "tfp1:6af4e77fac6f0c1862a753dc2fbc8e9d5371e028a2581519f63dec72d295a458"
+  },
+  {
+   "why": "a member twice counts twice",
+   "members": [
+    "tfp1:23059e5d3b59aed0a9192a66879d2b1eec70fa7b924117fc5ef1e7e5fca34bb3",
+    "tfp1:23059e5d3b59aed0a9192a66879d2b1eec70fa7b924117fc5ef1e7e5fca34bb3"
+   ],
+   "identity": "tfp1:c35ec6c6671ed52ed6fcb6027ed9b40f778352709aac4f1612606b7eed6de7ba"
+  }
+ ],
+ "members": [
+  {
+   "name": "model.safetensors",
+   "member": true
+  },
+  {
+   "name": "config.json",
+   "member": true
+  },
+  {
+   "name": "README.md",
+   "member": false
+  },
+  {
+   "name": "notes.MD",
+   "member": false
+  },
+  {
+   "name": "LICENSE",
+   "member": false
+  },
+  {
+   "name": "license.txt",
+   "member": false
+  },
+  {
+   "name": "LICENCE-MIT",
+   "member": false
+  },
+  {
+   "name": ".gitattributes",
+   "member": false
+  },
+  {
+   "name": "tokenizer.json",
+   "member": true
+  },
+  {
+   "name": "my.md.bin",
+   "member": true
+  }
+ ]
+}

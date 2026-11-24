@@ -1,0 +1,742 @@
+{
+ "about": "specs/configuration.md and specs/locations.md. Each case: build `files` in an empty folder, read the configuration with exactly `env` as the environment (on `platform`: linux, unix, or any), and compare `read` (each location's path, kind, depth, and min_size, added_by and added when given; null depth for a store read by its layout), `names`, `data` and `cache` when given, or that it is an error.",
+ "cases": [
+  {
+   "why": "LOC-001, LOC-004: the built-in locations on Linux with nothing set (no /etc/ramalama on the machine)",
+   "platform": "linux",
+   "env": {
+    "HOME": "{root}/home"
+   },
+   "files": [],
+   "read": [
+    {
+     "path": "{root}/home/.cache/huggingface/hub",
+     "kind": "directory",
+     "depth": 6
+    },
+    {
+     "path": "{root}/home/.cache/llama.cpp",
+     "kind": "directory",
+     "depth": 6
+    },
+    {
+     "path": "{root}/home/.lmstudio/models",
+     "kind": "lmstudio",
+     "depth": null
+    },
+    {
+     "path": "{root}/home/.local/share/nomic.ai/GPT4All",
+     "kind": "gpt4all",
+     "depth": 8
+    },
+    {
+     "path": "{root}/home/.cache/modelscope",
+     "kind": "modelscope",
+     "depth": null
+    },
+    {
+     "path": "{root}/home/.local/share/Jan/data",
+     "kind": "jan",
+     "depth": 8
+    },
+    {
+     "path": "{root}/home/.docker/models",
+     "kind": "docker",
+     "depth": null
+    },
+    {
+     "path": "{root}/home/.local/share/ramalama",
+     "kind": "ramalama",
+     "depth": null
+    },
+    {
+     "path": "{root}/home/.ollama/models",
+     "kind": "ollama",
+     "depth": null
+    },
+    {
+     "path": "/usr/share/ollama/.ollama/models",
+     "kind": "ollama",
+     "depth": null
+    }
+   ],
+   "cache": "{root}/home/.cache/tenstag"
+  },
+  {
+   "why": "LOC-001: the Hugging Face cache's variables; XDG folders; TENSTAG_CACHE_DIR",
+   "platform": "linux",
+   "env": {
+    "HOME": "{root}/home",
+    "XDG_CACHE_HOME": "{root}/x",
+    "XDG_DATA_HOME": "{root}/xd",
+    "TENSTAG_CACHE_DIR": "{root}/c",
+    "HF_HOME": "$HOME/hf",
+    "HUGGINGFACE_HUB_CACHE": "~/old"
+   },
+   "files": [],
+   "read": [
+    {
+     "path": "{root}/home/old",
+     "kind": "directory",
+     "depth": 6
+    },
+    {
+     "path": "{root}/x/llama.cpp",
+     "kind": "directory",
+     "depth": 6
+    },
+    {
+     "path": "{root}/home/.lmstudio/models",
+     "kind": "lmstudio",
+     "depth": null
+    },
+    {
+     "path": "{root}/xd/nomic.ai/GPT4All",
+     "kind": "gpt4all",
+     "depth": 8
+    },
+    {
+     "path": "{root}/home/.cache/modelscope",
+     "kind": "modelscope",
+     "depth": null
+    },
+    {
+     "path": "{root}/xd/Jan/data",
+     "kind": "jan",
+     "depth": 8
+    },
+    {
+     "path": "{root}/home/.docker/models",
+     "kind": "docker",
+     "depth": null
+    },
+    {
+     "path": "{root}/xd/ramalama",
+     "kind": "ramalama",
+     "depth": null
+    },
+    {
+     "path": "{root}/home/.ollama/models",
+     "kind": "ollama",
+     "depth": null
+    },
+    {
+     "path": "/usr/share/ollama/.ollama/models",
+     "kind": "ollama",
+     "depth": null
+    }
+   ],
+   "cache": "{root}/c"
+  },
+  {
+   "why": "LOC-001: HF_HUB_CACHE first; HF_HOME with a variable; the stores' own settings files",
+   "platform": "linux",
+   "env": {
+    "HOME": "{root}/home",
+    "HF_HOME": "$HOME/hf",
+    "LLAMA_CACHE": "{root}/llama",
+    "MODELSCOPE_CACHE": "~/ms",
+    "MODELS_PATH": "{root}/docker",
+    "RAMALAMA_STORE": "{root}/rl",
+    "OLLAMA_MODELS": " '~/ollama' "
+   },
+   "files": [
+    {
+     "path": "home/.lmstudio-home-pointer",
+     "text": "{root}/studio\n"
+    },
+    {
+     "path": "studio/settings.json",
+     "json": {
+      "downloadsFolder": "{root}/big/models"
+     }
+    },
+    {
+     "path": "home/.config/nomic.ai/GPT4All.ini",
+     "text": "[General]\nmodelPath=\"{root}/g4a\"\n"
+    },
+    {
+     "path": "home/.local/share/Jan/settings.json",
+     "json": {
+      "data_folder": "{root}/jandata"
+     }
+    }
+   ],
+   "read": [
+    {
+     "path": "{root}/home/hf/hub",
+     "kind": "directory",
+     "depth": 6
+    },
+    {
+     "path": "{root}/llama",
+     "kind": "directory",
+     "depth": 6
+    },
+    {
+     "path": "{root}/big/models",
+     "kind": "lmstudio",
+     "depth": null
+    },
+    {
+     "path": "{root}/g4a",
+     "kind": "gpt4all",
+     "depth": 8
+    },
+    {
+     "path": "{root}/home/ms",
+     "kind": "modelscope",
+     "depth": null
+    },
+    {
+     "path": "{root}/jandata",
+     "kind": "jan",
+     "depth": 8
+    },
+    {
+     "path": "{root}/docker",
+     "kind": "docker",
+     "depth": null
+    },
+    {
+     "path": "{root}/rl",
+     "kind": "ramalama",
+     "depth": null
+    },
+    {
+     "path": "{root}/home/ollama",
+     "kind": "ollama",
+     "depth": null
+    }
+   ]
+  },
+  {
+   "why": "LOC-002: a GPT4All modelPath in Qt's escaped form is not decoded: the default folder",
+   "platform": "linux",
+   "env": {
+    "HOME": "{root}/home"
+   },
+   "files": [
+    {
+     "path": "home/.config/nomic.ai/GPT4All.ini",
+     "text": "[General]\nmodelPath=\"C:\\\\models\"\n"
+    }
+   ],
+   "read": [
+    {
+     "path": "{root}/home/.cache/huggingface/hub",
+     "kind": "directory",
+     "depth": 6
+    },
+    {
+     "path": "{root}/home/.cache/llama.cpp",
+     "kind": "directory",
+     "depth": 6
+    },
+    {
+     "path": "{root}/home/.lmstudio/models",
+     "kind": "lmstudio",
+     "depth": null
+    },
+    {
+     "path": "{root}/home/.local/share/nomic.ai/GPT4All",
+     "kind": "gpt4all",
+     "depth": 8
+    },
+    {
+     "path": "{root}/home/.cache/modelscope",
+     "kind": "modelscope",
+     "depth": null
+    },
+    {
+     "path": "{root}/home/.local/share/Jan/data",
+     "kind": "jan",
+     "depth": 8
+    },
+    {
+     "path": "{root}/home/.docker/models",
+     "kind": "docker",
+     "depth": null
+    },
+    {
+     "path": "{root}/home/.local/share/ramalama",
+     "kind": "ramalama",
+     "depth": null
+    },
+    {
+     "path": "{root}/home/.ollama/models",
+     "kind": "ollama",
+     "depth": null
+    },
+    {
+     "path": "/usr/share/ollama/.ollama/models",
+     "kind": "ollama",
+     "depth": null
+    }
+   ]
+  },
+  {
+   "why": "LOC-003: RamaLama's store from ramalama.conf, a later file winning",
+   "platform": "linux",
+   "env": {
+    "HOME": "{root}/home",
+    "XDG_CONFIG_HOME": "{root}/conf"
+   },
+   "files": [
+    {
+     "path": "conf/ramalama/ramalama.conf",
+     "text": "[ramalama]\nstore = \"{root}/first\"\n"
+    },
+    {
+     "path": "conf/ramalama/ramalama.conf.d/b.conf",
+     "text": "[ramalama]\nstore = \"~/second\"\n"
+    }
+   ],
+   "read": [
+    {
+     "path": "{root}/home/.cache/huggingface/hub",
+     "kind": "directory",
+     "depth": 6
+    },
+    {
+     "path": "{root}/home/.cache/llama.cpp",
+     "kind": "directory",
+     "depth": 6
+    },
+    {
+     "path": "{root}/home/.lmstudio/models",
+     "kind": "lmstudio",
+     "depth": null
+    },
+    {
+     "path": "{root}/home/.local/share/nomic.ai/GPT4All",
+     "kind": "gpt4all",
+     "depth": 8
+    },
+    {
+     "path": "{root}/home/.cache/modelscope",
+     "kind": "modelscope",
+     "depth": null
+    },
+    {
+     "path": "{root}/home/.local/share/Jan/data",
+     "kind": "jan",
+     "depth": 8
+    },
+    {
+     "path": "{root}/home/.docker/models",
+     "kind": "docker",
+     "depth": null
+    },
+    {
+     "path": "{root}/home/second",
+     "kind": "ramalama",
+     "depth": null
+    },
+    {
+     "path": "{root}/home/.ollama/models",
+     "kind": "ollama",
+     "depth": null
+    },
+    {
+     "path": "/usr/share/ollama/.ollama/models",
+     "kind": "ollama",
+     "depth": null
+    }
+   ]
+  },
+  {
+   "why": "CFG-002, CFG-006, CFG-008: the file's locations, then TENSTAG_PATH; a folder given twice read once",
+   "platform": "unix",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml",
+    "TENSTAG_PATH": "{root}/p1::{root}/p2"
+   },
+   "files": [
+    {
+     "path": "config.toml",
+     "text": "defaults = false\n[[location]]\npath = \"~/data\"\n[[location]]\npath = \"{root}/o\"\nkind = \"ollama\"\n[[location]]\npath = \"{root}/deep\"\ndepth = 12\nmin_size = 0\n[[location]]\npath = \"{root}/p1\"\n[names]\nq = \"Qwen/Qwen3-0.6B-GGUF:Q8_0\"\n"
+    }
+   ],
+   "read": [
+    {
+     "path": "{root}/home/data",
+     "kind": "directory",
+     "depth": 6
+    },
+    {
+     "path": "{root}/o",
+     "kind": "ollama",
+     "depth": null
+    },
+    {
+     "path": "{root}/deep",
+     "kind": "directory",
+     "depth": 12,
+     "min_size": 0
+    },
+    {
+     "path": "{root}/p1",
+     "kind": "directory",
+     "depth": 6
+    },
+    {
+     "path": "{root}/p2",
+     "kind": "directory",
+     "depth": 6
+    }
+   ],
+   "names": {
+    "q": "Qwen/Qwen3-0.6B-GGUF:Q8_0"
+   }
+  },
+  {
+   "why": "CFG-009: who added a location and when; a date, and a date-time given in UTC without fractions",
+   "platform": "any",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "files": [
+    {
+     "path": "config.toml",
+     "text": "defaults = false\n[[location]]\npath = \"{root}/a\"\nadded_by = \"goldnode/tensrun\"\nadded = 2026-11-24T19:48:18.75+01:00\n[[location]]\npath = \"{root}/b\"\nadded = 2026-11-24\n[[location]]\npath = \"{root}/c\"\n"
+    }
+   ],
+   "read": [
+    {
+     "path": "{root}/a",
+     "kind": "directory",
+     "depth": 6,
+     "added_by": "goldnode/tensrun",
+     "added": "2026-11-24T18:48:18Z"
+    },
+    {
+     "path": "{root}/b",
+     "kind": "directory",
+     "depth": 6,
+     "added_by": null,
+     "added": "2026-11-24"
+    },
+    {
+     "path": "{root}/c",
+     "kind": "directory",
+     "depth": 6,
+     "added_by": null,
+     "added": null
+    }
+   ]
+  },
+  {
+   "why": "CFG-001: the file in XDG_CONFIG_HOME",
+   "platform": "any",
+   "env": {
+    "HOME": "{root}/home",
+    "XDG_CONFIG_HOME": "{root}/conf"
+   },
+   "files": [
+    {
+     "path": "conf/tenstag/config.toml",
+     "text": "defaults = false\n[[location]]\npath = \"{root}/x\"\n"
+    }
+   ],
+   "read": [
+    {
+     "path": "{root}/x",
+     "kind": "directory",
+     "depth": 6
+    }
+   ]
+  },
+  {
+   "why": "TFC-001: TENSTAG_CACHE_DIR only when absolute",
+   "platform": "linux",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CACHE_DIR": "relative",
+    "XDG_CACHE_HOME": "{root}/xc"
+   },
+   "files": [],
+   "read": [
+    {
+     "path": "{root}/xc/huggingface/hub",
+     "kind": "directory",
+     "depth": 6
+    },
+    {
+     "path": "{root}/xc/llama.cpp",
+     "kind": "directory",
+     "depth": 6
+    },
+    {
+     "path": "{root}/home/.lmstudio/models",
+     "kind": "lmstudio",
+     "depth": null
+    },
+    {
+     "path": "{root}/home/.local/share/nomic.ai/GPT4All",
+     "kind": "gpt4all",
+     "depth": 8
+    },
+    {
+     "path": "{root}/home/.cache/modelscope",
+     "kind": "modelscope",
+     "depth": null
+    },
+    {
+     "path": "{root}/home/.local/share/Jan/data",
+     "kind": "jan",
+     "depth": 8
+    },
+    {
+     "path": "{root}/home/.docker/models",
+     "kind": "docker",
+     "depth": null
+    },
+    {
+     "path": "{root}/home/.local/share/ramalama",
+     "kind": "ramalama",
+     "depth": null
+    },
+    {
+     "path": "{root}/home/.ollama/models",
+     "kind": "ollama",
+     "depth": null
+    },
+    {
+     "path": "/usr/share/ollama/.ollama/models",
+     "kind": "ollama",
+     "depth": null
+    }
+   ],
+   "cache": "{root}/xc/tenstag"
+  },
+  {
+   "why": "CFG-001: only one folder is looked in: with XDG_CONFIG_HOME set, ~/.config is not",
+   "platform": "linux",
+   "env": {
+    "HOME": "{root}/home",
+    "XDG_CONFIG_HOME": "{root}/conf"
+   },
+   "files": [
+    {
+     "path": "home/.config/tenstag/config.toml",
+     "text": "defaults = false\n"
+    }
+   ],
+   "read": [
+    {
+     "path": "{root}/home/.cache/huggingface/hub",
+     "kind": "directory",
+     "depth": 6
+    },
+    {
+     "path": "{root}/home/.cache/llama.cpp",
+     "kind": "directory",
+     "depth": 6
+    },
+    {
+     "path": "{root}/home/.lmstudio/models",
+     "kind": "lmstudio",
+     "depth": null
+    },
+    {
+     "path": "{root}/home/.local/share/nomic.ai/GPT4All",
+     "kind": "gpt4all",
+     "depth": 8
+    },
+    {
+     "path": "{root}/home/.cache/modelscope",
+     "kind": "modelscope",
+     "depth": null
+    },
+    {
+     "path": "{root}/home/.local/share/Jan/data",
+     "kind": "jan",
+     "depth": 8
+    },
+    {
+     "path": "{root}/home/.docker/models",
+     "kind": "docker",
+     "depth": null
+    },
+    {
+     "path": "{root}/home/.local/share/ramalama",
+     "kind": "ramalama",
+     "depth": null
+    },
+    {
+     "path": "{root}/home/.ollama/models",
+     "kind": "ollama",
+     "depth": null
+    },
+    {
+     "path": "/usr/share/ollama/.ollama/models",
+     "kind": "ollama",
+     "depth": null
+    }
+   ]
+  },
+  {
+   "why": "CFG-002: a key the file does not have",
+   "platform": "any",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "files": [
+    {
+     "path": "config.toml",
+     "text": "colour = 1\n"
+    }
+   ],
+   "error": true
+  },
+  {
+   "why": "CFG-002: downloads are gone",
+   "platform": "any",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "files": [
+    {
+     "path": "config.toml",
+     "text": "download = \"~/dl\"\n"
+    }
+   ],
+   "error": true
+  },
+  {
+   "why": "CFG-002: class is gone",
+   "platform": "any",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "files": [
+    {
+     "path": "config.toml",
+     "text": "[[location]]\npath = \"/x\"\nclass = \"diffusion\"\n"
+    }
+   ],
+   "error": true
+  },
+  {
+   "why": "CFG-003: an unknown kind",
+   "platform": "any",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "files": [
+    {
+     "path": "config.toml",
+     "text": "[[location]]\npath = \"/x\"\nkind = \"comfyui\"\n"
+    }
+   ],
+   "error": true
+  },
+  {
+   "why": "CFG-004: depth on a store read by its layout",
+   "platform": "any",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "files": [
+    {
+     "path": "config.toml",
+     "text": "[[location]]\npath = \"/o\"\nkind = \"ollama\"\ndepth = 3\n"
+    }
+   ],
+   "error": true
+  },
+  {
+   "why": "CFG-002: a value of the wrong type",
+   "platform": "any",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "files": [
+    {
+     "path": "config.toml",
+     "text": "defaults = \"no\"\n"
+    }
+   ],
+   "error": true
+  },
+  {
+   "why": "CFG-002: not TOML",
+   "platform": "any",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "files": [
+    {
+     "path": "config.toml",
+     "text": "[[location]\n"
+    }
+   ],
+   "error": true
+  },
+  {
+   "why": "CFG-009: added_by that is not an owner name",
+   "platform": "any",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "files": [
+    {
+     "path": "config.toml",
+     "text": "[[location]]\npath = \"/x\"\nadded_by = \"Some Program\"\n"
+    }
+   ],
+   "error": true
+  },
+  {
+   "why": "CFG-009: added as a string",
+   "platform": "any",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "files": [
+    {
+     "path": "config.toml",
+     "text": "[[location]]\npath = \"/x\"\nadded = \"2026-11-24\"\n"
+    }
+   ],
+   "error": true
+  },
+  {
+   "why": "CFG-009: added as a local date-time",
+   "platform": "any",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "files": [
+    {
+     "path": "config.toml",
+     "text": "[[location]]\npath = \"/x\"\nadded = 2026-11-24T18:48:18\n"
+    }
+   ],
+   "error": true
+  },
+  {
+   "why": "CFG-001: TENSTAG_CONFIG names a file that is not there",
+   "platform": "any",
+   "env": {
+    "HOME": "{root}/home",
+    "TENSTAG_CONFIG": "{root}/config.toml"
+   },
+   "files": [],
+   "error": true
+  }
+ ]
+}

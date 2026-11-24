@@ -1,0 +1,4 @@
+# Formatting for this repository. Wider lines than rustfmt's default (100) suit long doc comments and
+# the spec-citation comments described in COMMENTING.md.
+max_width = 120
+use_small_heuristics = "Max"
